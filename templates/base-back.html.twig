@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="utf-8">
+        <meta
+        http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- mobile metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<title>IRIS  ADMINS -
+			{% block title %}
+				Index
+			{% endblock %}
+		</title>
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta
+        name="author" content="">
+        <!-- site icon -->
+		{# Run `composer require symfony/webpack-encore-bundle`
+				           and uncomment the following Encore helpers to start using Symfony UX #}
+		{% block stylesheets %}
+        <!-- site icon -->
+        <link
+        rel="icon" href="{{asset('back-office/images/fevicon.png')}}" type="image/png"/>
+        <!-- bootstrap css -->
+        <link
+        rel="stylesheet" href="{{asset('back-office/css/bootstrap.min.css')}}"/>
+        <!-- site css -->
+        <link
+        rel="stylesheet" href="{{asset('back-office/css/style.css')}}"/>
+
+        <!-- responsive css -->
+        <link
+        rel="stylesheet" href="{{asset('back-office/css/responsive.css')}}"/>
+
+        <!-- color css -->
+        <link
+        rel="stylesheet" href="{{asset('back-office/css/colors.css')}}"/>
+
+        <!-- select bootstrap -->
+        <link
+        rel="stylesheet" href="{{asset('back-office/css/bootstrap-select.css')}}"/>
+
+        <!-- scrollbar css -->
+        <link
+        rel="stylesheet" href="{{asset('back-office/css/perfect-scrollbar.css')}}"/>
+
+        <!-- custom css -->
+        <link rel="stylesheet" href="{{asset('back-office/css/custom.css')}}"/>
+
+		{#{{ encore_entry_link_tags('app') }}#}
+		{% endblock %}
+	</head>
+	<body>
+		{{ include('inc/navbar-back.html.twig')}}
+
+		{% block body %}{% endblock %}
+
+		{% block javascripts %}
+
+<script src="{{asset('back-office/js/jquery.min.js')}}"></script>
+<script src="{{asset('back-office/js/popper.min.js')}}"></script>
+<script src="{{asset('back-office/js/bootstrap.min.js')}}"></script>
+<!-- wow animation -->
+<script src="{{asset('back-office/js/animate.js')}}"></script>
+<!-- select country -->
+<script src="{{asset('back-office/js/bootstrap-select.js')}}"></script>
+<!-- owl carousel -->
+<script src="{{asset('back-office/js/owl.carousel.js')}}"></script>
+<!-- chart js -->
+<script src="{{asset('back-office/js/Chart.min.js')}}"></script>
+<script src="{{asset('back-office/js/Chart.bundle.min.js')}}"></script>
+<script src="{{asset('back-office/js/utils.js')}}"></script>
+<script src="{{asset('back-office/js/analyser.js')}}"></script>
+<!-- nice scrollbar -->
+<script src="{{asset('back-office/js/perfect-scrollbar.min.js')}}"></script>
+<script>
+	var ps = new PerfectScrollbar('#sidebar');
+</script>
+<!-- custom js -->
+<script src="{{asset('back-office/js/custom.js')}}"></script>
+<script src="{{asset('back-office/js/chart_custom_style1.js')}}"></script>
+			{#{{ encore_entry_script_tags('app') }}#}
+		{% endblock %}
+	</body>
+</html>
