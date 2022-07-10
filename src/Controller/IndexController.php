@@ -55,6 +55,13 @@ class IndexController extends AbstractController
     {
         return $this->render('front/services.html.twig');
     }
+    /**
+     * @Route("/back", name = "back")
+     */
+    public function back()
+    {
+        return $this->render('back/index.html.twig');
+    }
 }
 
 ?>
