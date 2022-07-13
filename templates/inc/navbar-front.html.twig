@@ -1,45 +1,81 @@
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="index.html">IRIS.</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="oi oi-menu"></span>
-			Menu
-		</button>
+<!-- Spinner Start -->
+<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+	<div class="spinner"></div>
+</div>
+<!-- Spinner End -->
 
-		<div class="collapse navbar-collapse" id="ftco-nav">
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active">
-					<a href="{{ path('home') }}" class="nav-link">Home</a>
-				</li>
-				<li class="nav-item">
-                <a href="{{ path('about') }}" class="nav-link">About</a>
 
-                                </li>
-                                <li class="nav-item">
-                <a href="{{ path('team') }}" class="nav-link">Team</a>
-
-                                </li>
-                                <li class="nav-item">
-                <a href="{{ path('services') }}" class="nav-link">Services</a>
-
-                                </li>
-                                <li class="nav-item">
-                <a href="{{ path('project') }}" class="nav-link">Project</a>
-
-                                </li>
-                                <li class="nav-item">
-                <a href="{{ path('blog') }}" class="nav-link">Blog</a>
-                                </li>
-                                <li class="nav-item">
-                <a href="{{ path('back') }}" class="nav-link">Team Leader</a>
-                                </li>
-                                </li>
-                                <li class="nav-item">
-                <a href="{{ path('contact') }}" class="nav-link">Contact</a>
-
-				</li>
-			</ul>
+<!-- Topbar Start -->
+<div class="container-fluid bg-dark px-5 d-none d-lg-block">
+	<div class="row gx-0">
+		<div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
+			<div class="d-inline-flex align-items-center" style="height: 45px;">
+				<small class="me-3 text-light">
+					<i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</small>
+				<small class="me-3 text-light">
+					<i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
+				<small class="text-light">
+					<i class="fa fa-envelope-open me-2"></i>info@example.com</small>
+			</div>
+		</div>
+		<div class="col-lg-4 text-center text-lg-end">
+			<div class="d-inline-flex align-items-center" style="height: 45px;">
+				<a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="">
+					<i class="fab fa-twitter fw-normal"></i>
+				</a>
+				<a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="">
+					<i class="fab fa-facebook-f fw-normal"></i>
+				</a>
+				<a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="">
+					<i class="fab fa-linkedin-in fw-normal"></i>
+				</a>
+				<a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="">
+					<i class="fab fa-instagram fw-normal"></i>
+				</a>
+				<a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href="">
+					<i class="fab fa-youtube fw-normal"></i>
+				</a>
+			</div>
 		</div>
 	</div>
-</nav>
+</div>
+<!-- Topbar End -->
 
+<div class="container-fluid position-relative p-0">
+<nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+	<a href="index.html" class="navbar-brand p-0">
+		<img class="w-50" src="{{asset('front-office/img/logo.png')}}" alt="Image">
+	</a>
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+		<span class="fa fa-bars"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarCollapse">
+		<div class="navbar-nav ms-auto py-0">
+            <a href="{{ path('home') }}" class="nav-link">Home</a>
+			<a href="{{ path('about') }}" class="nav-link">About</a>
+			<a href="{{ path('services') }}" class="nav-item nav-link">Services</a>
+			<div class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Team Members</a>
+				<div class="dropdown-menu m-0">
+					<a href="{{ path('team') }}" class="dropdown-item">Team members</a>
+					<a href="{{ path('team') }}" class="dropdown-item">Apply to Join Us</a>
+				</div>
+			</div>
+			<div class="nav-item dropdown">
+				<a href="{{ path('project') }}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Projects</a>
+				<div class="dropdown-menu m-0">
+					<a href="" class="dropdown-item">Data Analytics</a>
+					<a href="feature.html" class="dropdown-item">Artificial Intelligence</a>
+					<a href="team.html" class="dropdown-item">CyberSecurity</a>
+					<a href="testimonial.html" class="dropdown-item">Networking</a>
+					<a href="quote.html" class="dropdown-item">Others</a>
+				</div>
+			</div>
+			<a href="{{ path('contact') }}" class="nav-item nav-link">Contact</a>
+		</div>
+		<butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal">
+			<i class="fa fa-search"></i>
+		</butaton>
+		<a href="{{ path('back') }}" class="btn btn-primary py-2 px-4 ms-3">Admins</a>
+	</div>
+</nav>
