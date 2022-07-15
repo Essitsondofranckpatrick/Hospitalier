@@ -1,0 +1,13 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Edit RealiserProjet{% endblock %}
+
+{% block body %}
+    <h1>Edit RealiserProjet</h1>
+
+    {{ include('realiser_projet/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_realiser_projet_index') }}">back to list</a>
+
+    {{ include('realiser_projet/_delete_form.html.twig') }}
+{% endblock %}

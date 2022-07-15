@@ -1,46 +1,88 @@
 <!DOCTYPE html>
 <html>
 	<head>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <title>IRIS  - {% block title %}Index{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap" rel="stylesheet"/>
+		<meta charset="utf-8">
+		<meta
+		http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- mobile metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<title>IRIS  ADMINS -
+			{% block title %}
+				Index
+			{% endblock %}
+		</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<!-- site icon -->
+		{# Run `composer require symfony/webpack-encore-bundle`
+						           and uncomment the following Encore helpers to start using Symfony UX #}
+			{% block stylesheets %}
+			<!-- site icon -->
+			<link
+			rel="icon" href="{{asset('back-office/images/fevicon.png')}}" type="image/png"/> <!-- bootstrap css -->
+			<link
+			rel="stylesheet" href="{{asset('back-office/css/bootstrap.min.css')}}"/>
+			<!-- site css -->
+			<link
+			rel="stylesheet" href="{{asset('back-office/css/style.css')}}"/>
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+			<!-- responsive css -->
+			<link
+			rel="stylesheet" href="{{asset('back-office/css/responsive.css')}}"/>
 
-        <link rel="stylesheet" href="{{asset('assets/css/animate.css')}}"/>
-        <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}"/>
-        <link rel="stylesheet" href="{{asset('assets/css/owl.theme.default.min.css')}}"/>
-        <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}"/>
-        <link rel="stylesheet" href="{{asset('assets/css/flaticon.css')}}"/>
-        <link rel="stylesheet" href="{{asset('assets/css/style.css') }}"/>
-        {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {{ include('inc/navbar.html.twig')}}
-        
-        {% block body %}{% endblock %}
+			<!-- color css -->
+			<link
+			rel="stylesheet" href="{{asset('back-office/css/colors.css')}}"/>
 
+			<!-- select bootstrap -->
+			<link
+			rel="stylesheet" href="{{asset('back-office/css/bootstrap-select.css')}}"/>
 
-        <script src="js/jquery.min.js"></script>
-        <script src="js/jquery-migrate-3.0.1.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.easing.1.3.js"></script>
-        <script src="js/jquery.waypoints.min.js"></script>
-        <script src="js/jquery.stellar.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <script src="js/jquery.animateNumber.min.js"></script>
-        <script src="js/scrollax.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-        <script src="js/google-map.js"></script>
-        <script src="js/main.js"></script>
-        {% block javascripts %}{% endblock %}
-            {#{{ encore_entry_script_tags('app') }}#}     
-    </body>  
+			<!-- scrollbar css -->
+			<link
+			rel="stylesheet" href="{{asset('back-office/css/perfect-scrollbar.css')}}"/>
+
+			<!-- custom css -->
+			<link
+			rel="stylesheet" href="{{asset('back-office/css/custom.css')}}"/>
+
+		{#{{ encore_entry_link_tags('app') }}#}
+		{% endblock %}
+	</head>
+	<body>
+	
+
+		{% block body %}{% endblock %}
+
+		{% block javascripts %}
+
+			<script src="{{asset('back-office/js/jquery.min.js')}}"></script>
+			<script src="{{asset('back-office/js/popper.min.js')}}"></script>
+			<script src="{{asset('back-office/js/bootstrap.min.js')}}"></script>
+			<!-- wow animation -->
+			<script src="{{asset('back-office/js/animate.js')}}"></script>
+			<!-- select country -->
+			<script src="{{asset('back-office/js/bootstrap-select.js')}}"></script>
+			<!-- owl carousel -->
+			<script src="{{asset('back-office/js/owl.carousel.js')}}"></script>
+			<!-- chart js -->
+			<script src="{{asset('back-office/js/Chart.min.js')}}"></script>
+			<script src="{{asset('back-office/js/Chart.bundle.min.js')}}"></script>
+			<script src="{{asset('back-office/js/utils.js')}}"></script>
+			<script src="{{asset('back-office/js/analyser.js')}}"></script>
+			<!-- nice scrollbar -->
+			<script src="{{asset('back-office/js/perfect-scrollbar.min.js')}}"></script>
+			<script>
+				var ps = new PerfectScrollbar('#sidebar');
+			</script>
+			<!-- custom js -->
+			<script src="{{asset('back-office/js/custom.js')}}"></script>
+			<script src="{{asset('back-office/js/chart_custom_style1.js')}}"></script>
+			{#{{ encore_entry_script_tags('app') }}#}
+		{% endblock %}
+	</body>
 </html>
+
+

@@ -2,32 +2,32 @@
 
 namespace App\Repository;
 
-use App\Entity\Stagiares;
+use App\Entity\RealiserProjet;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Stagiares>
+ * @extends ServiceEntityRepository<RealiserProjet>
  *
- * @method Stagiares|null find($id, $lockMode = null, $lockVersion = null)
- * @method Stagiares|null findOneBy(array $criteria, array $orderBy = null)
- * @method Stagiares[]    findAll()
- * @method Stagiares[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method RealiserProjet|null find($id, $lockMode = null, $lockVersion = null)
+ * @method RealiserProjet|null findOneBy(array $criteria, array $orderBy = null)
+ * @method RealiserProjet[]    findAll()
+ * @method RealiserProjet[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class StagiaresRepository extends ServiceEntityRepository
+class RealiserProjetRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Stagiares::class);
+        parent::__construct($registry, RealiserProjet::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Stagiares $entity, bool $flush = true): void
+    public function add(RealiserProjet $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -39,7 +39,7 @@ class StagiaresRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Stagiares $entity, bool $flush = true): void
+    public function remove(RealiserProjet $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -48,15 +48,15 @@ class StagiaresRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Stagiares[] Returns an array of Stagiares objects
+    //  * @return RealiserProjet[] Returns an array of RealiserProjet objects
     //  */
     /*
     public function findByExampleField($value)
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.exampleField = :val')
             ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
+            ->orderBy('r.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
@@ -65,10 +65,10 @@ class StagiaresRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Stagiares
+    public function findOneBySomeField($value): ?RealiserProjet
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()

@@ -1,0 +1,26 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}OffreStages{% endblock %}
+
+{% block body %}
+    <h1>OffreStages</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Niveau</th>
+                <td>{{ offre_stage.niveau }}</td>
+            </tr>
+            <tr>
+                <th>NombrePlaces</th>
+                <td>{{ offre_stage.nombrePlaces }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_offre_stages_index') }}">back to list</a>
+
+    <a href="{{ path('app_offre_stages_edit', {'projet': offre_stage.projet}) }}">edit</a>
+
+    {{ include('offre_stages/_delete_form.html.twig') }}
+{% endblock %}

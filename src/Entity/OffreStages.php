@@ -12,15 +12,10 @@ class OffreStages
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\OneToOne(targetEntity=Projets::class, inversedBy="offreStages", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $id;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $idProjet;
+    private $projet;
 
     /**
      * @ORM\Column(type="integer")
@@ -31,23 +26,6 @@ class OffreStages
      * @ORM\Column(type="integer")
      */
     private $nombrePlaces;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function getIdProjet(): ?int
-    {
-        return $this->idProjet;
-    }
-
-    public function setIdProjet(int $idProjet): self
-    {
-        $this->idProjet = $idProjet;
-
-        return $this;
-    }
 
     public function getNiveau(): ?int
     {
@@ -69,6 +47,18 @@ class OffreStages
     public function setNombrePlaces(int $nombrePlaces): self
     {
         $this->nombrePlaces = $nombrePlaces;
+
+        return $this;
+    }
+
+    public function getProjet(): ?Projets
+    {
+        return $this->projet;
+    }
+
+    public function setProjet(Projets $projet): self
+    {
+        $this->projet = $projet;
 
         return $this;
     }

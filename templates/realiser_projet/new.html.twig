@@ -1,0 +1,11 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}New RealiserProjet{% endblock %}
+
+{% block body %}
+    <h1>Create new RealiserProjet</h1>
+
+    {{ include('realiser_projet/_form.html.twig') }}
+
+    <a href="{{ path('app_realiser_projet_index') }}">back to list</a>
+{% endblock %}
