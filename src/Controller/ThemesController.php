@@ -28,15 +28,21 @@ class ThemesController extends AbstractController
     /**
      * @Route("/new", name="app_themes_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, ThemesRepository $themesRepository): Response
-    {
+    public function new(
+        Request $request,
+        ThemesRepository $themesRepository
+    ): Response {
         $theme = new Themes();
         $form = $this->createForm(ThemesType::class, $theme);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $themesRepository->add($theme);
-            return $this->redirectToRoute('app_themes_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute(
+                'app_themes_index',
+                [],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('themes/new.html.twig', [
@@ -58,14 +64,21 @@ class ThemesController extends AbstractController
     /**
      * @Route("/{id}/edit", name="app_themes_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Themes $theme, ThemesRepository $themesRepository): Response
-    {
+    public function edit(
+        Request $request,
+        Themes $theme,
+        ThemesRepository $themesRepository
+    ): Response {
         $form = $this->createForm(ThemesType::class, $theme);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $themesRepository->add($theme);
-            return $this->redirectToRoute('app_themes_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute(
+                'app_themes_index',
+                [],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('themes/edit.html.twig', [
@@ -77,12 +90,24 @@ class ThemesController extends AbstractController
     /**
      * @Route("/{id}", name="app_themes_delete", methods={"POST"})
      */
-    public function delete(Request $request, Themes $theme, ThemesRepository $themesRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$theme->getId(), $request->request->get('_token'))) {
+    public function delete(
+        Request $request,
+        Themes $theme,
+        ThemesRepository $themesRepository
+    ): Response {
+        if (
+            $this->isCsrfTokenValid(
+                'delete' . $theme->getId(),
+                $request->request->get('_token')
+            )
+        ) {
             $themesRepository->remove($theme);
         }
 
-        return $this->redirectToRoute('app_themes_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute(
+            'app_themes_index',
+            [],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

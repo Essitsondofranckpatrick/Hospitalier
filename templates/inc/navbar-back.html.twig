@@ -3,7 +3,7 @@
 	<div class="sidebar_blog_1">
 		<div class="sidebar-header">
 			<div class="logo_section">
-				<a href="index.html"><img class="logo_icon img-responsive" src="{{asset('back-office/images/logo/logo_icon.png')}}" alt="#"/></a>
+				<a href="{{ path('back') }}"><img class="logo_icon img-responsive" src="{{asset('back-office/images/logo/logo.png')}}" alt="#"/></a>
 			</div>
 		</div>
 		<div class="sidebar_user_info">
@@ -29,22 +29,11 @@
 				</a>
 				<ul class="collapse list-unstyled" id="dashboard">
 					<li>
-						<a href="dashboard.html">>
+						<a href="{{ path('back') }}">>
 							<span>Default Dashboard</span>
 						</a>
 					</li>
-					<li>
-						<a href="dashboard_2.html">>
-							<span>Dashboard style 2</span>
-						</a>
-					</li>
 				</ul>
-			</li>
-			<li>
-				<a href="widgets.html">
-					<i class="fa fa-clock-o orange_color"></i>
-					<span>Widgets</span>
-				</a>
 			</li>
 			<li>
 				<a href="#element" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -96,30 +85,19 @@
 				</a>
 				<ul class="collapse list-unstyled" id="apps">
 					<li>
-						<a href="email.html">>
+						<a href="{{ path('email') }}">>
 							<span>Email</span>
 						</a>
 					</li>
 					<li>
-						<a href="calendar.html">>
+						<a href="{{ path('calendar') }}">>
 							<span>Calendar</span>
-						</a>
-					</li>
-					<li>
-						<a href="media_gallery.html">>
-							<span>Media Gallery</span>
 						</a>
 					</li>
 				</ul>
 			</li>
 			<li>
-				<a href="price.html">
-					<i class="fa fa-briefcase blue1_color"></i>
-					<span>Pricing Tables</span>
-				</a>
-			</li>
-			<li>
-				<a href="contact.html">
+				<a href="{{ path('contactback') }}">
 					<i class="fa fa-paper-plane red_color"></i>
 					<span>Contact</span>
 				</a>
@@ -131,41 +109,33 @@
 				</a>
 				<ul class="collapse list-unstyled" id="additional_page">
 					<li>
-						<a href="profile.html">>
+						<a href="{{ path('profile') }}">>
 							<span>Profile</span>
 						</a>
 					</li>
 					<li>
-						<a href="project.html">>
+						<a href="{{ path('projet') }}">>
 							<span>Projects</span>
 						</a>
 					</li>
-					<li>
-						<a href="login.html">>
-							<span>Login</span>
-						</a>
-					</li>
-					<li>
-						<a href="404_error.html">>
-							<span>404 Error</span>
-						</a>
-					</li>
+					
+					
 				</ul>
 			</li>
 			<li>
-				<a href="map.html">
+				<a href="{{ path('map') }}">
 					<i class="fa fa-map purple_color2"></i>
 					<span>Map</span>
 				</a>
 			</li>
 			<li>
-				<a href="charts.html">
+				<a href="{{ path('charts') }}">
 					<i class="fa fa-bar-chart-o green_color"></i>
 					<span>Charts</span>
 				</a>
 			</li>
 			<li>
-				<a href="settings.html">
+				<a href="{{ path('settings') }}">
 					<i class="fa fa-cog yellow_color"></i>
 					<span>Settings</span>
 				</a>
@@ -184,7 +154,7 @@
 					<i class="fa fa-bars"></i>
 				</button>
 				<div class="logo_section">
-					<a href="index.html"><img class="img-responsive" src="{{asset('back-office/images/logo/logo.png')}}" alt="#"/></a>
+					<a href="{{ path('back') }}"><img class="img-responsive" src="{{asset('back-office/images/logo/logo.png')}}" alt="#"/></a>
 				</div>
 				<div class="right_topbar">
 					<div class="icon_info">
@@ -212,9 +182,9 @@
 								<a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="{{asset('back-office/images/layout_img/user_img.jpg')}}" alt="#"/><span class="name_user">Christian NEBOT</span>
 								</a>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="profile.html">My Profile</a>
-									<a class="dropdown-item" href="settings.html">Settings</a>
-									<a class="dropdown-item" href="help.html">Help</a>
+									<a class="dropdown-item" href="{{ path('profile') }}">My Profile</a>
+									<a class="dropdown-item" href="{{ path('settings') }}">Settings</a>
+									<a class="dropdown-item" href="{{ path('help') }}">Help</a>
 									<a class="dropdown-item" href="#">
 										<span>Log Out</span>
 										<i class="fa fa-sign-out"></i>

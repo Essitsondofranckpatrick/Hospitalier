@@ -11,9 +11,10 @@
 		<div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
 			<div class="d-inline-flex align-items-center" style="height: 45px;">
 				<small class="me-3 text-light">
-					<i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</small>
+<i class="fa fa-map-marker-alt me-2"></i>1, 2 rue André Ampère - 2083 - Pôle Technologique - El Ghazala.</small>
+
 				<small class="me-3 text-light">
-					<i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
+					<i class="fa fa-phone-alt me-2"></i>00216 70 250 000</small>
 				<small class="text-light">
 					<i class="fa fa-envelope-open me-2"></i>info@example.com</small>
 			</div>
@@ -41,9 +42,10 @@
 </div>
 <!-- Topbar End -->
 
+<!-- Navbar & Carousel Start -->
 <div class="container-fluid position-relative p-0">
-<nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
-	<a href="index.html" class="navbar-brand p-0">
+	<nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+	<a href="{{ path('home') }}" class="navbar-brand p-0">
 		<img class="w-50" src="{{asset('front-office/img/logo.png')}}" alt="Image">
 	</a>
 	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -53,24 +55,16 @@
 		<div class="navbar-nav ms-auto py-0">
             <a href="{{ path('home') }}" class="nav-link">Home</a>
 			<a href="{{ path('about') }}" class="nav-link">About</a>
-			<a href="{{ path('services') }}" class="nav-item nav-link">Services</a>
 			<div class="nav-item dropdown">
-				<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Team Members</a>
+				<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Projects</a>
 				<div class="dropdown-menu m-0">
-					<a href="{{ path('team') }}" class="dropdown-item">Team members</a>
-					<a href="{{ path('team') }}" class="dropdown-item">Apply to Join Us</a>
+					<a href="{{ path('themes') }}" class="dropdown-item">Research Themes</a>
+					<a href="{{ path('project') }}" class="dropdown-item">Achieved Projects</a>
+					<a href="{{ path('project') }}" class="dropdown-item">Current Projects</a>
+					<a href="{{ path('offres') }}" class="dropdown-item">Intenships offers</a>
 				</div>
 			</div>
-			<div class="nav-item dropdown">
-				<a href="{{ path('project') }}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Projects</a>
-				<div class="dropdown-menu m-0">
-					<a href="" class="dropdown-item">Data Analytics</a>
-					<a href="feature.html" class="dropdown-item">Artificial Intelligence</a>
-					<a href="team.html" class="dropdown-item">CyberSecurity</a>
-					<a href="testimonial.html" class="dropdown-item">Networking</a>
-					<a href="quote.html" class="dropdown-item">Others</a>
-				</div>
-			</div>
+			<a href="{{ path('team') }}" class="nav-item nav-link">Team</a>
 			<a href="{{ path('contact') }}" class="nav-item nav-link">Contact</a>
 		</div>
 		<butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal">
@@ -78,4 +72,8 @@
 		</butaton>
 		<a href="{{ path('back') }}" class="btn btn-primary py-2 px-4 ms-3">Admins</a>
 	</div>
+	
 </nav>
+
+</div>
+<!-- Navbar & Carousel End -->

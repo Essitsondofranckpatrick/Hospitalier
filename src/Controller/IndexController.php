@@ -3,6 +3,11 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Themes;
+use App\Entity\Membres;
+use App\Entity\Temoignages;
+use App\Entity\Projets;
+use App\Entity\OffreStages;
 
 class IndexController extends AbstractController
 {
@@ -11,14 +16,37 @@ class IndexController extends AbstractController
      */
     public function home()
     {
-        return $this->render('front/index.html.twig');
+        $themes = $this->getDoctrine()
+            ->getRepository(Themes::class)
+            ->findAll();
+        $temoignages = $this->getDoctrine()
+            ->getRepository(Temoignages::class)
+            ->findAll();
+        return $this->render('front/index.html.twig', [
+            'themes' => $themes,
+            'temoignages' => $temoignages,
+        ]);
     }
+
+    /**
+     * @Route("/quotes", name = "quotes")
+     */
+    public function quotes()
+    {
+        return $this->render('front/quote.html.twig');
+    }
+
     /**
      * @Route("/team", name = "team")
      */
     public function team()
     {
-        return $this->render('front/team.html.twig');
+        $membres = $this->getDoctrine()
+            ->getRepository(Membres::class)
+            ->findAll();
+        return $this->render('front/team.html.twig', [
+            'membres' => $membres,
+        ]);
     }
     /**
      * @Route("/about", name = "about")
@@ -46,14 +74,51 @@ class IndexController extends AbstractController
      */
     public function project()
     {
-        return $this->render('front/project.html.twig');
+        $projets = $this->getDoctrine()
+            ->getRepository(Projets::class)
+            ->findAll();
+        return $this->render('front/projet.html.twig', [
+            'projets' => $projets,
+        ]);
+    }
+
+    /**
+     * @Route("/offres", name = "offres")
+     */
+    public function offres()
+    {
+        $offres = $this->getDoctrine()
+            ->getRepository(OffreStages::class)
+            ->findAll();
+        return $this->render('front/offres.html.twig', [
+            'offres' => $offres,
+        ]);
+    }
+
+    /**
+     * @Route("/project/{id}", name="projet_detail", methods={"GET"})
+     */
+    public function show(Projets $projet): Response
+    {
+        return $this->render('front/projet-single.html.twig', [
+            'projet' => $projet,
+        ]);
     }
     /**
-     * @Route("/services", name = "services")
+     * @Route("/themes", name = "themes")
      */
-    public function services()
+    public function themes()
     {
-        return $this->render('front/services.html.twig');
+        $themes = $this->getDoctrine()
+            ->getRepository(Themes::class)
+            ->findAll();
+        $temoignages = $this->getDoctrine()
+            ->getRepository(Temoignages::class)
+            ->findAll();
+        return $this->render('front/themes.html.twig', [
+            'themes' => $themes,
+            'temoignages' => $temoignages,
+        ]);
     }
     /**
      * @Route("/login", name = "login")
@@ -68,6 +133,70 @@ class IndexController extends AbstractController
     public function back()
     {
         return $this->render('back/index.html.twig');
+    }
+
+    /**
+     * @Route("/calendar", name = "calendar")
+     */
+    public function calendar()
+    {
+        return $this->render('back/calendar.html.twig');
+    }
+    /**
+     * @Route("/email", name = "email")
+     */
+    public function email()
+    {
+        return $this->render('back/email.html.twig');
+    }
+    /**
+     * @Route("/profile", name = "profile")
+     */
+    public function profile()
+    {
+        return $this->render('back/profile.html.twig');
+    }
+    /**
+     * @Route("/map", name = "map")
+     */
+    public function map()
+    {
+        return $this->render('back/map.html.twig');
+    }
+    /**
+     * @Route("/settings", name = "settings")
+     */
+    public function settings()
+    {
+        return $this->render('back/settings.html.twig');
+    }
+    /**
+     * @Route("/help", name = "help")
+     */
+    public function help()
+    {
+        return $this->render('back/index.html.twig');
+    }
+    /**
+     * @Route("/charts", name = "charts")
+     */
+    public function charts()
+    {
+        return $this->render('back/charts.html.twig');
+    }
+    /**
+     * @Route("/projet", name = "projet")
+     */
+    public function projet()
+    {
+        return $this->render('back/project.html.twig');
+    }
+    /**
+     * @Route("/contactback", name = "contactback")
+     */
+    public function contactback()
+    {
+        return $this->render('back/contact.html.twig');
     }
 }
 
