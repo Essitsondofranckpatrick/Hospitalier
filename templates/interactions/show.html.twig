@@ -1,0 +1,31 @@
+{% extends 'base-back.html.twig' %}
+
+
+{% block title %}Interactions{% endblock %}
+
+{% block body %}
+    <h1>Interactions</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ interaction.id }}</td>
+            </tr>
+            <tr>
+                <th>Message</th>
+                <td>{{ interaction.message }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ interaction.type }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_interactions_index') }}">back to list</a>
+
+    <a href="{{ path('app_interactions_edit', {'id': interaction.id}) }}">edit</a>
+
+    {{ include('interactions/_delete_form.html.twig') }}
+{% endblock %}

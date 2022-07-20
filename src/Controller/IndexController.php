@@ -4,10 +4,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Themes;
-use App\Entity\Membres;
-use App\Entity\Temoignages;
-use App\Entity\Projets;
-use App\Entity\OffreStages;
+use App\Entity\Users;
+use App\Entity\Interactions;
+use App\Entity\Projects;
+use App\Entity\AchievedProjects;
 
 class IndexController extends AbstractController
 {
@@ -20,8 +20,8 @@ class IndexController extends AbstractController
             ->getRepository(Themes::class)
             ->findAll();
         $temoignages = $this->getDoctrine()
-            ->getRepository(Temoignages::class)
-            ->findAll();
+            ->getRepository(Interactions::class)
+            ->findByType('Temoignage');
         return $this->render('front/index.html.twig', [
             'themes' => $themes,
             'temoignages' => $temoignages,
@@ -42,7 +42,7 @@ class IndexController extends AbstractController
     public function team()
     {
         $membres = $this->getDoctrine()
-            ->getRepository(Membres::class)
+            ->getRepository(Users::class)
             ->findAll();
         return $this->render('front/team.html.twig', [
             'membres' => $membres,
@@ -75,7 +75,7 @@ class IndexController extends AbstractController
     public function project()
     {
         $projets = $this->getDoctrine()
-            ->getRepository(Projets::class)
+            ->getRepository(Projects::class)
             ->findAll();
         return $this->render('front/projet.html.twig', [
             'projets' => $projets,
@@ -88,24 +88,15 @@ class IndexController extends AbstractController
     public function offres()
     {
         $offres = $this->getDoctrine()
-            ->getRepository(OffreStages::class)
-            ->findAll();
+            ->getRepository(Projects::class)
+            ->findByOffreStage(true);
         return $this->render('front/offres.html.twig', [
             'offres' => $offres,
         ]);
     }
 
     /**
-     * @Route("/project/{id}", name="projet_detail", methods={"GET"})
-     */
-    public function show(Projets $projet): Response
-    {
-        return $this->render('front/projet-single.html.twig', [
-            'projet' => $projet,
-        ]);
-    }
-    /**
-     * @Route("/themes", name = "themes")
+     * @Route("/themes_front", name ="themes")
      */
     public function themes()
     {
@@ -113,7 +104,7 @@ class IndexController extends AbstractController
             ->getRepository(Themes::class)
             ->findAll();
         $temoignages = $this->getDoctrine()
-            ->getRepository(Temoignages::class)
+            ->getRepository(Interactions::class)
             ->findAll();
         return $this->render('front/themes.html.twig', [
             'themes' => $themes,

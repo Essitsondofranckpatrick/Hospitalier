@@ -1,0 +1,27 @@
+{% extends 'base-back.html.twig' %}
+
+
+{% block title %}AchievedProjects{% endblock %}
+
+{% block body %}
+    <h1>AchievedProjects</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ achieved_project.id }}</td>
+            </tr>
+            <tr>
+                <th>Duree</th>
+                <td>{{ achieved_project.duree }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_achieved_projects_index') }}">back to list</a>
+
+    <a href="{{ path('app_achieved_projects_edit', {'id': achieved_project.id}) }}">edit</a>
+
+    {{ include('achieved_projects/_delete_form.html.twig') }}
+{% endblock %}

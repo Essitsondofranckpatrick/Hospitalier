@@ -22,21 +22,21 @@ class Themes
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nomTheme;
+    private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity=Projets::class, mappedBy="theme")
-     */
-    private $projets;
-
-    /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $libelle;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Projects::class, mappedBy="themes")
+     */
+    private $projects;
+
     public function __construct()
     {
-        $this->projets = new ArrayCollection();
+        $this->projects = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -44,44 +44,14 @@ class Themes
         return $this->id;
     }
 
-    public function getNomTheme(): ?string
+    public function getNom(): ?string
     {
-        return $this->nomTheme;
+        return $this->nom;
     }
 
-    public function setNomTheme(string $nomTheme): self
+    public function setNom(string $nom): self
     {
-        $this->nomTheme = $nomTheme;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Projets>
-     */
-    public function getProjets(): Collection
-    {
-        return $this->projets;
-    }
-
-    public function addProjet(Projets $projet): self
-    {
-        if (!$this->projets->contains($projet)) {
-            $this->projets[] = $projet;
-            $projet->setTheme($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProjet(Projets $projet): self
-    {
-        if ($this->projets->removeElement($projet)) {
-            // set the owning side to null (unless already changed)
-            if ($projet->getTheme() === $this) {
-                $projet->setTheme(null);
-            }
-        }
+        $this->nom = $nom;
 
         return $this;
     }
@@ -91,15 +61,45 @@ class Themes
         return $this->libelle;
     }
 
-    public function setLibelle(string $libelle): self
+    public function setLibelle(?string $libelle): self
     {
         $this->libelle = $libelle;
 
         return $this;
     }
-    
+
+    /**
+     * @return Collection<int, Projects>
+     */
+    public function getProjects(): Collection
+    {
+        return $this->projects;
+    }
+
+    public function addProject(Projects $project): self
+    {
+        if (!$this->projects->contains($project)) {
+            $this->projects[] = $project;
+            $project->setThemes($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProject(Projects $project): self
+    {
+        if ($this->projects->removeElement($project)) {
+            // set the owning side to null (unless already changed)
+            if ($project->getThemes() === $this) {
+                $project->setThemes(null);
+            }
+        }
+
+        return $this;
+    }
+
     public function __toString()
     {
-        return $this->getNomTheme();
+        return $this->getNom();
     }
 }

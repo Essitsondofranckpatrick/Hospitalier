@@ -1,0 +1,11 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}New Interactions{% endblock %}
+
+{% block body %}
+    <h1>Create new Interactions</h1>
+
+    {{ include('interactions/_form.html.twig') }}
+
+    <a href="{{ path('app_interactions_index') }}">back to list</a>
+{% endblock %}

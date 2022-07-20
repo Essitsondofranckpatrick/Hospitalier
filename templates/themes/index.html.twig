@@ -1,5 +1,6 @@
 {% extends 'base-back.html.twig' %}
 
+
 {% block title %}Themes index{% endblock %}
 
 {% block body %}
@@ -9,7 +10,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>NomTheme</th>
+                <th>Nom</th>
                 <th>Libelle</th>
                 <th>actions</th>
             </tr>
@@ -18,7 +19,7 @@
         {% for theme in themes %}
             <tr>
                 <td>{{ theme.id }}</td>
-                <td>{{ theme.nomTheme }}</td>
+                <td>{{ theme.nom }}</td>
                 <td>{{ theme.libelle }}</td>
                 <td>
                     <a href="{{ path('app_themes_show', {'id': theme.id}) }}">show</a>

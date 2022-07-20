@@ -1,0 +1,37 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Interactions index{% endblock %}
+
+{% block body %}
+    <h1>Interactions index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Message</th>
+                <th>Type</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for interaction in interactions %}
+            <tr>
+                <td>{{ interaction.id }}</td>
+                <td>{{ interaction.message }}</td>
+                <td>{{ interaction.type }}</td>
+                <td>
+                    <a href="{{ path('app_interactions_show', {'id': interaction.id}) }}">show</a>
+                    <a href="{{ path('app_interactions_edit', {'id': interaction.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_interactions_new') }}">Create new</a>
+{% endblock %}
