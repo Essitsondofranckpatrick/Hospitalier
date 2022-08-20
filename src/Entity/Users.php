@@ -42,11 +42,6 @@ class Users
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $role;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     private $diplome;
 
     /**
@@ -58,6 +53,21 @@ class Users
      * @ORM\OneToMany(targetEntity=AchievedProjects::class, mappedBy="users")
      */
     private $achievedProjects;
+
+    /**
+     * @ORM\Column(type="string", length=500)
+     */
+    private $image;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $facebook;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $linkedin;
 
     public function __construct()
     {
@@ -118,14 +128,14 @@ class Users
         return $this;
     }
 
-    public function getRole(): ?string
+    public function getImage()
     {
-        return $this->role;
+        return $this->image;
     }
 
-    public function setRole(?string $role): self
+    public function setImage($image)
     {
-        $this->role = $role;
+        $this->image = $image;
 
         return $this;
     }
@@ -204,6 +214,30 @@ class Users
     }
     public function __toString()
     {
-        return $this->getEmail();
+        return $this->getNom();
+    }
+
+    public function getFacebook(): ?string
+    {
+        return $this->facebook;
+    }
+
+    public function setFacebook(?string $facebook): self
+    {
+        $this->facebook = $facebook;
+
+        return $this;
+    }
+
+    public function getLinkedin(): ?string
+    {
+        return $this->linkedin;
+    }
+
+    public function setLinkedin(?string $linkedin): self
+    {
+        $this->linkedin = $linkedin;
+
+        return $this;
     }
 }

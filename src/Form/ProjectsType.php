@@ -9,8 +9,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProjectsType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
+    public function buildForm(
+        FormBuilderInterface $builder,
+        array $options
+    ): void {
         $builder
             ->add('ref')
             ->add('nom')
@@ -18,9 +20,7 @@ class ProjectsType extends AbstractType
             ->add('dureeEstimee')
             ->add('offreStage')
             ->add('effectif')
-            ->add('etat')
-            ->add('themes')
-        ;
+            ->add('themes');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

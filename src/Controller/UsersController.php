@@ -28,15 +28,32 @@ class UsersController extends AbstractController
     /**
      * @Route("/new", name="app_users_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, UsersRepository $usersRepository): Response
-    {
+    public function new(
+        Request $request,
+        UsersRepository $usersRepository
+    ): Response {
         $user = new Users();
         $form = $this->createForm(UsersType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $usersRepository->add($user);
-            return $this->redirectToRoute('app_users_index', [], Response::HTTP_SEE_OTHER);
+            $file = $user->getImage();
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $entityManager = $this->getDoctrine()->getManager();
+            $user->setImage($fileName);
+            try {
+                $file->move($this->getParameter('photos_directory'), $fileName);
+            } catch (FileException $e) {
+                //TODO
+            }
+            $entityManager->persist($user);
+            $entityManager->flush();
+            //$usersRepository->add($user);
+            return $this->redirectToRoute(
+                'app_users_index',
+                [],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('users/new.html.twig', [
@@ -58,14 +75,31 @@ class UsersController extends AbstractController
     /**
      * @Route("/{id}/edit", name="app_users_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Users $user, UsersRepository $usersRepository): Response
-    {
+    public function edit(
+        Request $request,
+        Users $user,
+        UsersRepository $usersRepository
+    ): Response {
         $form = $this->createForm(UsersType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $usersRepository->add($user);
-            return $this->redirectToRoute('app_users_index', [], Response::HTTP_SEE_OTHER);
+            $file = $user->getImage();
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $entityManager = $this->getDoctrine()->getManager();
+            $user->setImage($fileName);
+            try {
+                $file->move($this->getParameter('photos_directory'), $fileName);
+            } catch (FileException $e) {
+                //TODO
+            }
+            $entityManager->persist($user);
+            $entityManager->flush();
+            return $this->redirectToRoute(
+                'app_users_index',
+                [],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('users/edit.html.twig', [
@@ -77,14 +111,24 @@ class UsersController extends AbstractController
     /**
      * @Route("/{id}", name="app_users_delete", methods={"POST"})
      */
-    public function delete(Request $request, Users $user, UsersRepository $usersRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+    public function delete(
+        Request $request,
+        Users $user,
+        UsersRepository $usersRepository
+    ): Response {
+        if (
+            $this->isCsrfTokenValid(
+                'delete' . $user->getId(),
+                $request->request->get('_token')
+            )
+        ) {
             $usersRepository->remove($user);
         }
 
-        return $this->redirectToRoute('app_users_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute(
+            'app_users_index',
+            [],
+            Response::HTTP_SEE_OTHER
+        );
     }
-
-    
 }

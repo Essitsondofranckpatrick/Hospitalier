@@ -50,11 +50,6 @@ class Projects
     private $effectif;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $etat;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Themes::class, inversedBy="projects")
      */
     private $themes;
@@ -63,6 +58,11 @@ class Projects
      * @ORM\OneToMany(targetEntity=AchievedProjects::class, mappedBy="projects")
      */
     private $achievedProjects;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $achieved;
 
     public function __construct()
     {
@@ -146,18 +146,6 @@ class Projects
         return $this;
     }
 
-    public function getEtat(): ?string
-    {
-        return $this->etat;
-    }
-
-    public function setEtat(?string $etat): self
-    {
-        $this->etat = $etat;
-
-        return $this;
-    }
-
     public function getThemes(): ?Themes
     {
         return $this->themes;
@@ -204,5 +192,17 @@ class Projects
     public function __toString()
     {
         return $this->getNom();
+    }
+
+    public function getAchieved(): ?bool
+    {
+        return $this->achieved;
+    }
+
+    public function setAchieved(?bool $achieved): self
+    {
+        $this->achieved = $achieved;
+
+        return $this;
     }
 }

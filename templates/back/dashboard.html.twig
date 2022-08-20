@@ -157,28 +157,6 @@
                         </div>
                      </div>
                      <!-- graph -->
-                     <div class="row column2 graph margin_bottom_30">
-                        <div class="col-md-l2 col-lg-12">
-                           <div class="white_shd full">
-                              <div class="full graph_head">
-                                 <div class="heading1 margin_0">
-                                    <h2>Extra Area Chart</h2>
-                                 </div>
-                              </div>
-                              <div class="full graph_revenue">
-                                 <div class="row">
-                                    <div class="col-md-12">
-                                       <div class="content">
-                                          <div class="area_chart">
-                                             <canvas height="120" id="canvas"></canvas>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
                      <!-- end graph -->
                      <div class="row column3">
                         <!-- testimonial -->
@@ -195,23 +173,17 @@
                                        <div class="content testimonial">
                                           <div id="testimonial_slider" class="carousel slide" data-ride="carousel">
                                              <!-- Wrapper for carousel items -->
+                                             {% for temoignage in temoignages %}
                                              <div class="carousel-inner">
                                                 <div class="item carousel-item active">
                                                    <div class="img-box"><img src="images/layout_img/user_img.jpg" alt=""></div>
-                                                   <p class="testimonial">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae..</p>
-                                                   <p class="overview"><b>Michael Stuart</b>Seo Founder</p>
-                                                </div>
-                                                <div class="item carousel-item">
-                                                   <div class="img-box"><img src="images/layout_img/user_img.jpg" alt=""></div>
-                                                   <p class="testimonial">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae..</p>
-                                                   <p class="overview"><b>Michael Stuart</b>Seo Founder</p>
-                                                </div>
-                                                <div class="item carousel-item">
-                                                   <div class="img-box"><img src="images/layout_img/user_img.jpg" alt=""></div>
-                                                   <p class="testimonial">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae..</p>
-                                                   <p class="overview"><b>Michael Stuart</b>Seo Founder</p>
+                                                   <p class="testimonial">{{ temoignage.message }}</p>
+                                                   <p class="overview"><b>{{ temoignage.users }}</b>{{ temoignage.users }}</p>
                                                 </div>
                                              </div>
+                                             {% else %}
+                                                <p>Aucun temoignages</p>
+                                             {% endfor %}
                                              <!-- Carousel controls -->
                                              <a class="carousel-control left carousel-control-prev" href="#testimonial_slider" data-slide="prev">
                                              <i class="fa fa-angle-left"></i>

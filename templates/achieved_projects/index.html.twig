@@ -9,15 +9,17 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Duree</th>
+                <th>Projets</th>
+                <th>Membres</th>
+                <th>Duree(Semaines)</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for achieved_project in achieved_projects %}
             <tr>
-                <td>{{ achieved_project.id }}</td>
+                <td>{{ achieved_project.projects }}</td>
+                <td>{{ achieved_project.users }}</td>
                 <td>{{ achieved_project.duree }}</td>
                 <td>
                     <a href="{{ path('app_achieved_projects_show', {'id': achieved_project.id}) }}">show</a>

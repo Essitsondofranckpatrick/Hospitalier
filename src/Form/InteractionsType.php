@@ -9,13 +9,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class InteractionsType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
-        $builder
-            ->add('message')
-            ->add('type')
-            ->add('users')
-        ;
+    public function buildForm(
+        FormBuilderInterface $builder,
+        array $options
+    ): void {
+        $builder->add('subject')->add('message');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

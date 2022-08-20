@@ -70,33 +70,58 @@ class IndexController extends AbstractController
         return $this->render('front/contact.html.twig');
     }
     /**
-     * @Route("/project", name = "project")
+     * @Route("/project/current", name = "project")
      */
     public function project()
     {
+        $themes = $this->getDoctrine()
+            ->getRepository(Themes::class)
+            ->findAll();
         $projets = $this->getDoctrine()
             ->getRepository(Projects::class)
             ->findAll();
         return $this->render('front/projet.html.twig', [
             'projets' => $projets,
+            'themes' => $themes,
         ]);
     }
 
     /**
-     * @Route("/offres", name = "offres")
+     * @Route("/project/achieved", name = "project_ach")
+     */
+    public function project_achieved()
+    {
+        $themes = $this->getDoctrine()
+            ->getRepository(Themes::class)
+            ->findAll();
+        $projets = $this->getDoctrine()
+            ->getRepository(Projects::class)
+            ->findByAchieved(true);
+        return $this->render('front/projet_ach.html.twig', [
+            'projets' => $projets,
+            'themes' => $themes,
+        ]);
+    }
+
+    /**
+     * @Route("/project/offres", name = "offres")
      */
     public function offres()
     {
-        $offres = $this->getDoctrine()
+        $themes = $this->getDoctrine()
+            ->getRepository(Themes::class)
+            ->findAll();
+        $projets = $this->getDoctrine()
             ->getRepository(Projects::class)
             ->findByOffreStage(true);
         return $this->render('front/offres.html.twig', [
-            'offres' => $offres,
+            'projets' => $projets,
+            'themes' => $themes,
         ]);
     }
 
     /**
-     * @Route("/themes_front", name ="themes")
+     * @Route("/project/themes_front", name ="themes")
      */
     public function themes()
     {
@@ -111,6 +136,17 @@ class IndexController extends AbstractController
             'temoignages' => $temoignages,
         ]);
     }
+
+    /**
+     * @Route("/project/{id}", name="projet_detail", methods={"GET"})
+     */
+    public function show(Projects $project): Response
+    {
+        return $this->render('front/projet-single.html.twig', [
+            'project' => $project,
+        ]);
+    }
+
     /**
      * @Route("/login", name = "login")
      */
@@ -123,7 +159,12 @@ class IndexController extends AbstractController
      */
     public function back()
     {
-        return $this->render('back/index.html.twig');
+        $temoignages = $this->getDoctrine()
+            ->getRepository(Interactions::class)
+            ->findByType('Temoignage');
+        return $this->render('back/index.html.twig', [
+            'temoignages' => $temoignages,
+        ]);
     }
 
     /**

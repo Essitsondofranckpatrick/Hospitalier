@@ -33,6 +33,11 @@ class Interactions
      */
     private $users;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $subject;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -70,6 +75,18 @@ class Interactions
     public function setUsers(?Users $users): self
     {
         $this->users = $users;
+
+        return $this;
+    }
+
+    public function getSubject(): ?string
+    {
+        return $this->subject;
+    }
+
+    public function setSubject(?string $subject): self
+    {
+        $this->subject = $subject;
 
         return $this;
     }
